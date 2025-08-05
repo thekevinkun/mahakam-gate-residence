@@ -1,6 +1,11 @@
-const AmenitiesList = () => {
+import { IoIosCheckmarkCircle } from "react-icons/io";
+
+const AmenitiesList = ({ name }) => {
   return (
-    <div>AmenitiesList</div>
+    <>
+      <IoIosCheckmarkCircle className="text-xl sm:text-2xl text-sky-900 shrink-0"/>
+      <span>{name}</span>
+    </>
   )
 }
 

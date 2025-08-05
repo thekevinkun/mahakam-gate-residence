@@ -16,3 +16,21 @@ export const features = [
         value: "apartment"
     },
 ]
+
+export const amenities = [
+    "laundry room",
+    "air conditioning",
+    "furnished",
+    "private garden",
+    "maids room",
+    "covered parking",
+    "pets allowed",
+    "smart home integrations",
+    "kitchen appliances",
+    "broadband internet",
+    "barbecue area",
+    "carbon monoxide alarm",
+    "walk in closet",
+    "facilities for disable",
+    "security staff",
+]
