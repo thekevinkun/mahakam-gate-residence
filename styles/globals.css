@@ -9,7 +9,7 @@ body {
 }
 
 .btn {
-  @apply inline-block px-4 py-2 rounded text-sm md:text-base font-medium uppercase tracking-widest transition-colors duration-200;
+  @apply inline-block px-7 py-2 text-sm md:text-base font-medium uppercase tracking-widest transition-colors duration-200;
 }
 
 .btn-primary {
@@ -21,7 +21,7 @@ body {
 }
 
 .btn-outline {
-  @apply border border-sky-900 text-white hover:bg-sky-900;
+  @apply border border-sky-700 text-white hover:bg-sky-900;
 }
 
 .padding {
@@ -34,4 +34,9 @@ body {
 
 .padding-x {
   @apply px-4 md:px-10 lg:px-20;
+}
+
+.bg-media {
+  background-color: #052f4a;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
 }

@@ -34,3 +34,14 @@ export const amenities = [
     "facilities for disable",
     "security staff",
 ]
+
+export const photos = [
+    "/images/photo-1.JPG",
+    "/images/photo-2.JPG",
+    "/images/photo-3.JPG",
+    "/images/photo-4.JPG",
+    "/images/photo-5.JPG",
+    "/images/photo-6.JPG",
+    "/images/photo-7.JPG",
+    "/images/photo-8.jpg",
+]
