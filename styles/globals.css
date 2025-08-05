@@ -2,24 +2,18 @@
 
 @import "tailwindcss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+ font-optical-sizing: auto;
+ font-style: normal;
 }
 
 .btn {
-  @apply inline-block px-4 py-2 rounded text-sm font-medium transition-colors duration-200;
+  @apply inline-block px-4 py-2 rounded text-sm md:text-base font-medium uppercase tracking-widest transition-colors duration-200;
 }
 
 .btn-primary {
-  @apply bg-blue-600 text-white hover:bg-blue-700;
+  @apply bg-sky-800 text-white hover:bg-sky-900;
 }
 
 .btn-secondary {
@@ -27,5 +21,5 @@ body {
 }
 
 .btn-outline {
-  @apply border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white;
+  @apply border border-sky-900 text-white hover:bg-sky-900;
 }

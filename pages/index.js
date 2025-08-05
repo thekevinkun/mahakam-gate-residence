@@ -1,5 +1,6 @@
 import {
   Hero,
+  FeaturesBar,
   About,
   MediaGallery,
   MortgageCalculator,
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <FeaturesBar />
       <main>
         <About />
         <MediaGallery />
