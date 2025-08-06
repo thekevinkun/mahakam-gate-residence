@@ -16,12 +16,8 @@ body {
   @apply bg-sky-800 text-white hover:bg-sky-900;
 }
 
-.btn-secondary {
-  @apply bg-green-600 text-white hover:bg-green-700;
-}
-
 .btn-outline {
-  @apply border border-sky-700 text-white hover:bg-sky-900;
+  @apply border border-sky-700 text-sky-700 hover:bg-sky-900 hover:text-white;
 }
 
 .padding {

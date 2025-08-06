@@ -51,3 +51,34 @@ export const mortgageTypes = [
     { id: "konvensional", label: "KPR Konvensional" },
     { id: "syariah", label: "KPR Syariah" },
 ];
+
+export const agentInfo = {
+    name: "Rhayana Safaelia",
+    photo: "/images/agent.jpeg",
+    details: [
+        {
+            name: "Job position",
+            value: "Lead Broker"
+        },
+        {
+            name: "Service areas",
+            value: "Anggrek Merah 3 No. 54"
+        },
+        { 
+            name: "License", 
+            value: "53658"
+        },
+        {
+            name: "Broker License",
+            value: "28873"
+        },
+        {
+            name: "Speaks",
+            value: "English, Mandarin, French"
+        },
+        {
+            name: "Listing reference",
+            value: "XGB2772KVN0611"
+        },
+    ]
+}
