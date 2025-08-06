@@ -45,3 +45,9 @@ export const photos = [
     "/images/photo-7.JPG",
     "/images/photo-8.jpg",
 ]
+
+export const mortgageTypes = [
+    { id: "subsidi", label: "KPR Subsidi" },
+    { id: "konvensional", label: "KPR Konvensional" },
+    { id: "syariah", label: "KPR Syariah" },
+];
