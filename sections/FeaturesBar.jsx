@@ -14,7 +14,7 @@ const FeaturesBar = () => {
             variants={slideIn("up", 0.4, index * 0.25)}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0 }}
           >
             <FeatureList key={item.name} name={item.name} value={item.value} />
           </motion.div>

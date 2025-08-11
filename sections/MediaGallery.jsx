@@ -12,7 +12,7 @@ const MediaGallery = () => {
         <div className="padding-x max-w-5xl mx-auto">
           {/* VIDEO SECTION */}
           <motion.h2 
-            variants={fadeIn()}
+            variants={fadeIn(1.2, 0.1)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.4 }}
@@ -28,10 +28,10 @@ const MediaGallery = () => {
         <div className="padding-x max-w-6xl mx-auto pt-12 md:pt-16">
           {/* PHOTO SECTION */}
           <motion.h2 
-            variants={fadeIn()}
+            variants={fadeIn(1.2, 0.1)}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.4 }}
             className="text-center text-xl md:text-3xl font-bold tracking-[0.35em] uppercase mb-12"
           >
             PHOTOS
@@ -55,7 +55,7 @@ const MediaGallery = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="text-center mt-12"
         >
-          <button className="btn btn-outline !text-xs md:!text-sm">VIEW MORE</button>  
+          <button className="btn btn-outline !text-white !text-xs md:!text-sm">VIEW MORE</button>  
         </motion.div>
       </div>
     </section>

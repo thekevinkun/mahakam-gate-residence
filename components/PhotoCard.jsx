@@ -6,10 +6,10 @@ import { scaleIn } from "@/utilities/motion";
 const PhotoCard = ({ src, index }) => {
   return (
     <motion.div 
-      variants={scaleIn(0.6, index * 0.35)}
+      variants={scaleIn(0.6, index * 0.25)}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.25 }}
       className="relative w-full aspect-square overflow-hidden shadow-md"
     >
       <Image

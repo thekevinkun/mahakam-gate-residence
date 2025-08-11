@@ -52,10 +52,10 @@ export const fadeIn = (duration = 0.6, delay = 0) => ({
 });
 
 export const scaleIn = (duration = 0.6, delay = 0) => ({
-  hidden: { opacity: 0, scale: 0.9 },
+  hidden: { opacity: 0, scale: 0.8 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration, delay, ease: "easeOut" },
+    transition: { duration, delay, ease: "easeInOut" },
   },
 });

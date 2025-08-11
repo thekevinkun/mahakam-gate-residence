@@ -12,7 +12,7 @@ const About = () => {
         variants={slideIn("up")}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.25 }}
         className="w-full flex flex-col items-center"
       >
         <h2 
@@ -23,20 +23,20 @@ const About = () => {
       </motion.div>
 
       <motion.div
-        variants={fadeIn()}
+        variants={fadeIn(0.8, 0.4)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.7 }}
         className="text-center text-xl md:text-2xl font-semibold text-black mb-2"
       >
         The Mahakam River
       </motion.div>
 
       <motion.div
-        variants={fadeIn()}
+        variants={fadeIn(0.9, 0.4)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.7 }}
         className="text-center text-sm md:text-base text-black font-light mb-4"
       >
         Samarinda, Kalimantan Timur

@@ -12,7 +12,7 @@ const AgentCard = () => {
     <div>
       {/* Agent Profile */}
       <motion.div 
-        variants={slideIn("right", 0.5, 0.3)}
+        variants={slideIn("right", 0.7, 0.3)}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -44,7 +44,7 @@ const AgentCard = () => {
       </motion.div>
 
       <motion.div 
-        variants={slideIn("right", 0.5)}
+        variants={slideIn("right", 0.5, 0.1)}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}

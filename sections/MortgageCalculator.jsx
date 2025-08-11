@@ -56,10 +56,10 @@ const MortgageCalculator = () => {
   return (
     <section id="mortgage" className="padding max-w-screen-xl mx-auto overflow-hidden">
       <motion.h2 
-        variants={slideIn("up")}
+        variants={slideIn("up", 0.2)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.25 }}
         className="text-center text-2xl md:text-3xl font-bold text-black tracking-[0.35em] uppercase mb-4"
       >
         Mortgage Calculator
@@ -67,10 +67,10 @@ const MortgageCalculator = () => {
 
 
       <motion.div 
-        variants={fadeIn()}
+        variants={fadeIn(1, 0.1)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.5 }}
         className="max-w-full mx-auto text-center"
       >
         <Link href="#" className="group inline-flex justify-center mb-14">
@@ -89,10 +89,10 @@ const MortgageCalculator = () => {
       <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Left side - form */}
         <motion.div 
-          variants={slideIn("left", 0.4)}
+          variants={slideIn("left", 0.3)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.25 }}
           className="space-y-8"
         >
           <div>
@@ -113,10 +113,10 @@ const MortgageCalculator = () => {
         
         {/* Right Side - Result Box */}
         <motion.div 
-          variants={slideIn("right", 0.5, 1)}
+          variants={slideIn("right", 0.9, 1)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.5 }}
           className="w-full max-w-full lg:max-w-sm justify-self-end bg-white border border-blue-200 shadow-sm rounded-xl p-8 flex flex-col gap-6"
         >
           <div>
