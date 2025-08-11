@@ -1,14 +1,57 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { motion } from "framer-motion";
 import { IoIosArrowForward } from "react-icons/io";
 
-import { mortgageTypes } from "@/utilities/constant";
+import { Calculator } from "@/components";
+
 import { slideIn, fadeIn } from "@/utilities/motion";
 
 const MortgageCalculator = () => {
-  const [loanDuration, setLoanDuration] = useState(10);
   const [activeType, setActiveType] = useState("konvensional");
+
+  const formik = useFormik({
+    initialValues: {
+      price: "",
+      downPayment: "",
+      loanDuration: "10",
+      interestRate: 0.05
+    },
+    validationSchema: Yup.object({
+      price: Yup.number().required("Required").min(10000000, "Min 10 juta"),
+      downPayment: Yup.number().required("Required"),
+      loanDuration: Yup.number().required("Required"),
+      interestRate: Yup.number().required("Required").min(0),
+    }),
+    onSubmit: () => {},
+  });
+
+  const { values, errors, touched, setFieldValue } = formik;
+
+  const result = useMemo(() => {
+    const price = Number(values.price || 0);
+    const down = Number(values.downPayment || 0);
+
+    if (price <= 0 || down <= 0) return null;
+
+    const loanAmount = price - down;
+    const durationMonths = values.loanDuration * 12;
+    const annualRate = Number(values.interestRate);
+    const monthlyRate = annualRate / 12;
+    
+    if (loanAmount <= 0 || durationMonths <= 0) return null;
+
+    const numerator = loanAmount * monthlyRate * Math.pow(1 + monthlyRate, durationMonths);
+    const denominator = Math.pow(1 + monthlyRate, durationMonths) - 1;
+    const monthlyInstallment = numerator / denominator;
+
+    return {
+      monthlyPayment: Math.round(monthlyInstallment),
+      interestRate: annualRate * 100,
+    };
+  }, [values.price, values.downPayment, values.loanDuration, values.interestRate]);
 
   return (
     <section id="mortgage" className="padding max-w-screen-xl mx-auto overflow-hidden">
@@ -57,75 +100,15 @@ const MortgageCalculator = () => {
             <p className="text-sm md:text-base text-gray-600 mt-2">Estimate what your monthly mortgage payments will be</p>
           </div>
 
-          {/* Mortgage type */}
-          <div className="flex">
-            {mortgageTypes.map((type) => (
-              <button 
-                key={type.id}
-                className={`px-4 py-2 transition ${
-                  activeType === type.id
-                    ? "bg-white shadow-lg text-gray-700 font-semibold"
-                    : "bg-black/5 text-gray-700 border-gray-300 hover:bg-gray-200"
-                }`}
-                onClick={() => setActiveType(type.id)}
-              >
-                {type.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Form inputs */}
-          <div className="space-y-6">
-            {/* Property price */}
-            <div>
-              <label className="block text-gray-700 font-medium mb-1">Property Priced</label>
-              <div className="flex items-center gap-2">
-                <input 
-                  type="number"
-                  placeholder="2.500.000.000"
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-                />
-                <span className="text-gray-600 font-semibold">Rp</span>
-              </div>
-            </div>
-
-            {/* Down Payment */}
-            <div>
-              <label className="block text-gray-700 mb-1 font-medium">Down Payment</label>
-              <div className="flex items-center gap-2">
-                <input
-                  type="number"
-                  placeholder="200.000.000"
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-                />
-                <span className="text-gray-600 font-semibold">Rp</span>
-              </div>
-            </div>
-
-            {/* Loan Duration */}
-            <div>
-              <label className="block text-gray-700 mb-1 font-medium">Loan Duration</label>
-              <div className="flex items-center justify-between mb-1 text-sm text-gray-600">
-                <span>5 tahun</span>
-                <span className="font-semibold">{loanDuration} tahun</span>
-                <span>25 tahun</span>
-              </div>
-              <input
-                type="range"
-                min={5}
-                max={25}
-                value={loanDuration}
-                onChange={(e) => setLoanDuration(Number(e.target.value))}
-                className="w-full"
-              />
-            </div>
-
-            {/* Note */}
-            <p className="text-xs sm:text-sm text-gray-500">
-              Please note that the calculation provided is for estimation purposes
-              only and may not reflect the final terms of your mortgage
-            </p>
-          </div>
+          <Calculator 
+            activeType={activeType}
+            setActiveType={setActiveType}
+            price={values.price}
+            downPayment={values.downPayment}
+            loanDuration={values.loanDuration}
+            interestRate={values.interestRate}
+            setFieldValue={setFieldValue}
+          />
         </motion.div>
         
         {/* Right Side - Result Box */}
@@ -138,17 +121,23 @@ const MortgageCalculator = () => {
         >
           <div>
             <h3 className="text-sm md:text-base font-semibold text-gray-500 mb-1">Monthly Cost</h3>
-            <p className="text-3xl font-bold text-sky-900">Rp 0</p>
+            <p className="text-3xl font-bold text-sky-900">
+              Rp {result?.monthlyPayment?.toLocaleString("id-ID") || 0}
+            </p>
           </div>
 
           <div className="text-sm text-gray-700 space-y-2">
             <div className="flex justify-between">
               <span>Mortgage Payment</span>
-              <span className="font-semibold">Rp 0</span>
+              <span className="font-semibold">
+                Rp {result?.monthlyPayment?.toLocaleString("id-ID") || 0}
+              </span>
             </div>
             <div className="flex justify-between">
               <span>Interest Rate</span>
-              <span className="font-semibold">0</span>
+              <span className="font-semibold">
+                {result?.interestRate || 0}%
+              </span>
             </div>
           </div>
         </motion.div>
