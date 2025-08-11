@@ -52,7 +52,7 @@ const Hero = () => {
           </motion.h1>
           
           <motion.p 
-            variants={fadeIn(0.5, 0.1)}
+            variants={fadeIn(0.7, 0.2)}
             initial="hidden"
             animate="visible"
             className="text-lg md:text-2xl font-light mb-8"
@@ -66,7 +66,7 @@ const Hero = () => {
             animate="visible"
             className="flex items-center space-x-2 mb-10"
           >
-            <span className="text-xl md:text-2xl font-light">18,250,000,000 IDR</span>
+            <span className="text-xl md:text-2xl font-light">1,800,000,000 IDR</span>
             <span className="bg-sky-800 text-white text-xs tracking-widest px-2 py-0.5">FOR SALE</span>
           </motion.div>
 
@@ -74,7 +74,7 @@ const Hero = () => {
             variants={slideIn("up", 0.5, 0.4)}
             initial="hidden"
             animate="visible"
-            className="btn btn-outline mb-12"
+            className="btn btn-outline !text-white mb-12"
           >
             Contact Agent
           </motion.button>
@@ -83,7 +83,7 @@ const Hero = () => {
             variants={slideIn("up", 0.5, 0.7)}
             initial="hidden"
             animate="visible"
-            className="flex items-center space-x-3 text-sky-950 text-2xl md:text-3xl"
+            className="flex items-center space-x-3 text-sky-900 text-2xl md:text-3xl"
           >
             <Link href="https://www.instagram.com" target="_blank">
               <FaInstagramSquare />

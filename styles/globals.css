@@ -17,7 +17,7 @@ body {
 }
 
 .btn-outline {
-  @apply border border-sky-700 text-sky-700 hover:bg-sky-900 hover:text-white;
+  @apply border border-sky-900 text-sky-700 hover:bg-sky-900 hover:text-white;
 }
 
 .padding {
