@@ -38,18 +38,31 @@ const MortgageCalculator = () => {
 
     const loanAmount = price - down;
     const durationMonths = values.loanDuration * 12;
-    const annualRate = Number(values.interestRate);
-    const monthlyRate = annualRate / 12;
-    
+
     if (loanAmount <= 0 || durationMonths <= 0) return null;
 
-    const numerator = loanAmount * monthlyRate * Math.pow(1 + monthlyRate, durationMonths);
-    const denominator = Math.pow(1 + monthlyRate, durationMonths) - 1;
-    const monthlyInstallment = numerator / denominator;
+    let monthlyInstallment = 0;
+    let displayRate = values.interestRate;  
+
+    if (activeType === "syariah") {
+      // Fixed margin (Murabahah) 8.75% per year over the whole loan amount
+      const annualMarginRate = 0.0875; 
+      const totalMargin = loanAmount * annualMarginRate * values.loanDuration; 
+      monthlyInstallment = (loanAmount + totalMargin) / durationMonths;
+      displayRate = annualMarginRate * 100;
+    } else {
+      // Konvensional & Subsidi use existing annuity formula
+      const annualRate = Number(values.interestRate);
+      const monthlyRate = annualRate / 12;
+      const numerator = loanAmount * monthlyRate * Math.pow(1 + monthlyRate, durationMonths);
+      const denominator = Math.pow(1 + monthlyRate, durationMonths) - 1;
+      monthlyInstallment = numerator / denominator;
+      displayRate = annualRate * 100;
+    }
 
     return {
       monthlyPayment: Math.round(monthlyInstallment),
-      interestRate: annualRate * 100,
+      interestRate: displayRate.toFixed(),
     };
   }, [values.price, values.downPayment, values.loanDuration, values.interestRate]);
 
@@ -134,7 +147,12 @@ const MortgageCalculator = () => {
               </span>
             </div>
             <div className="flex justify-between">
-              <span>Interest Rate</span>
+              <span>
+                {activeType === "syariah" ?
+                  "Fixed Margin"
+                : "Interest Rate"
+                }
+              </span>
               <span className="font-semibold">
                 {result?.interestRate || 0}%
               </span>
