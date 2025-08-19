@@ -36,14 +36,38 @@ export const amenities = [
 ]
 
 export const photos = [
-    "/images/photo-1.JPG",
-    "/images/photo-2.JPG",
-    "/images/photo-3.JPG",
-    "/images/photo-4.JPG",
-    "/images/photo-5.JPG",
-    "/images/photo-6.JPG",
-    "/images/photo-7.JPG",
-    "/images/photo-8.jpg",
+    {
+        src: "/images/photo-1.JPG",
+        altText: "Office room"
+    },
+    {
+        src: "/images/photo-2.JPG",
+        altText: "Front yard of the house"
+    },
+    {
+        src: "/images/photo-3.JPG",
+        altText: "The lounge"
+    },
+    {
+        src: "/images/photo-4.JPG",
+        altText: "Kitchen room"
+    },
+    {
+        src: "/images/photo-5.JPG",
+        altText: "Bedroom"
+    },
+    {
+        src: "/images/photo-6.JPG",
+        altText: "Living room"
+    },
+    {
+        src: "/images/photo-7.JPG",
+        altText: "Backyard"
+    },
+    {
+        src: "/images/photo-8.jpg",
+        altText: "Backyard's Swimming Pool"
+    },
 ]
 
 export const mortgageTypes = [
@@ -55,6 +79,9 @@ export const mortgageTypes = [
 export const agentInfo = {
     name: "Rhayana Safaelia",
     photo: "/images/agent.jpeg",
+    email: "rhayanasafaelia@gmail.com",
+    phone: "+6281545905727",
+    permitNumber: "1234567890",
     details: [
         {
             name: "Job position",

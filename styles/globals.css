@@ -2,11 +2,14 @@
 
 @import "tailwindcss";
 
+html { 
+  scroll-behavior: smooth; 
+}
+
 body {
  font-family: "Outfit", sans-serif;
  font-optical-sizing: auto;
  font-style: normal;
- scroll-behavior: smooth;
 }
 
 .btn {
@@ -36,4 +39,51 @@ body {
 .bg-media {
   background-color: #052f4a;
   background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  /* Hide unwanted stuff */
+  footer, nav, #video-section, #map, .hide-print {
+    display: none !important;
+  }
+
+  /* Make sure sections expand full width */
+  body {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000;
+    background: #fff;
+  }
+
+  /* Hero image as full-width banner if you want it */
+  .hero {
+    display: block;
+    page-break-after: always; /* each section can go on new page */
+  }
+
+  /* Media gallery style */
+  #media .media-print {
+    padding: 8px 12px !important;
+  }
+  #media .photo-grid-print {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: 220px !important;
+    gap: 14px !important;
+  }
+
+  /* PresentedBy section styled for print */
+  #presented-by {
+    border-top: 2px solid #000;
+    padding-top: 12px;
+    margin-top: 20px;
+  }
+  #presented-by .qr {
+    max-width: 120px;
+  }
+
+  /* Avoid breaking inside important blocks */
+  #presented-by, #features, #media, #mortgage {
+    page-break-inside: avoid;
+  }
 }

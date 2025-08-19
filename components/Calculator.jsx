@@ -58,14 +58,14 @@ const Calculator = ({
   return (
     <>
       {/* mortgage types */}
-      <div className="flex">
+      <div className="w-fit flex rounded-lg overflow-hidden border border-gray-300">
         {mortgageTypes.map((type) => (
           <button
             key={type.id}
-            className={`px-4 py-2 transition ${
+            className={`px-4 py-2 text-sm md:text-base transition ${
               activeType === type.id
-                ? "bg-white shadow-lg text-gray-700 font-semibold"
-                : "bg-black/5 text-gray-700 border-gray-300 hover:bg-gray-200"
+                ? "bg-sky-800 text-white font-semibold"
+                : "bg-white text-gray-600 hover:bg-gray-100"
             }`}
             onClick={() => {
               setActiveType(type.id);
@@ -98,7 +98,7 @@ const Calculator = ({
                 }
               }}
               placeholder="0"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
             />
             <span className="text-gray-600 font-semibold">IDR</span>
           </div>
@@ -123,7 +123,7 @@ const Calculator = ({
                 }
               }}
               placeholder="0"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
             />
             <span className="text-gray-600 font-semibold">IDR</span>
           </div>
@@ -142,24 +142,25 @@ const Calculator = ({
             Loan Duration
           </label>
           <div className="flex items-center justify-between mb-1 text-sm text-gray-600">
-            <span>{activeType === "subsidi" ? "15 tahun" : "5 tahun"}</span>
-            <span className="font-semibold">{loanDuration} tahun</span>
-            <span>20 tahun</span>
+            <span className="hide-print">{activeType === "subsidi" ? "15" : "5"}</span>
+            <span className="font-semibold">{loanDuration} year</span>
+            <span className="hide-print">20</span>
           </div>
           <input
             type="range"
+            aria-label="Loan Duration in years"
             min={activeType === "subsidi" ? 15 : 5}
             max={20}
             value={loanDuration}
             onChange={(e) =>
               setFieldValue("loanDuration", Number(e.target.value))
             }
-            className="w-full"
+            className="w-full hide-print"
           />
         </div>
 
         {/* Interest Types */}
-        <div>
+        <div className="hide-print">
           <label className="block text-gray-700 mb-1 font-medium">
             Interest Type
           </label>

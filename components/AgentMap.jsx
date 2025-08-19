@@ -3,15 +3,15 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
 // Fix Leaflet's default icon path
-delete (L.Icon.Default.prototype)._getIconUrl;
+delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+  iconUrl: require("leaflet/dist/images/marker-icon.png"),
+  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
-const position = [-0.4772294, 117.1306983]; // Example: New York (replace with real)
+const position = [-0.4772294, 117.1306983];
 
 const AgentMap = () => {
   return (
@@ -30,6 +30,6 @@ const AgentMap = () => {
       </Marker>
     </MapContainer>
   );
-}
+};
 
 export default AgentMap;

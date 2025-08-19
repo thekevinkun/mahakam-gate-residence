@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import Link from "next/link";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
@@ -14,10 +13,10 @@ const MortgageCalculator = () => {
 
   const formik = useFormik({
     initialValues: {
-      price: "",
+      price: "1800000000",
       downPayment: "",
       loanDuration: "10",
-      interestRate: 0.05
+      interestRate: 0.05,
     },
     validationSchema: Yup.object({
       price: Yup.number().required("Required").min(10000000, "Min 10 juta"),
@@ -42,19 +41,20 @@ const MortgageCalculator = () => {
     if (loanAmount <= 0 || durationMonths <= 0) return null;
 
     let monthlyInstallment = 0;
-    let displayRate = values.interestRate;  
+    let displayRate = values.interestRate;
 
     if (activeType === "syariah") {
       // Fixed margin (Murabahah) 8.75% per year over the whole loan amount
-      const annualMarginRate = 0.0875; 
-      const totalMargin = loanAmount * annualMarginRate * values.loanDuration; 
+      const annualMarginRate = 0.0875;
+      const totalMargin = loanAmount * annualMarginRate * values.loanDuration;
       monthlyInstallment = (loanAmount + totalMargin) / durationMonths;
       displayRate = annualMarginRate * 100;
     } else {
       // Konvensional & Subsidi use existing annuity formula
       const annualRate = Number(values.interestRate);
       const monthlyRate = annualRate / 12;
-      const numerator = loanAmount * monthlyRate * Math.pow(1 + monthlyRate, durationMonths);
+      const numerator =
+        loanAmount * monthlyRate * Math.pow(1 + monthlyRate, durationMonths);
       const denominator = Math.pow(1 + monthlyRate, durationMonths) - 1;
       monthlyInstallment = numerator / denominator;
       displayRate = annualRate * 100;
@@ -64,11 +64,21 @@ const MortgageCalculator = () => {
       monthlyPayment: Math.round(monthlyInstallment),
       interestRate: displayRate.toFixed(),
     };
-  }, [values.price, values.downPayment, values.loanDuration, values.interestRate]);
+  }, [
+    values.price,
+    values.downPayment,
+    values.loanDuration,
+    values.interestRate,
+  ]);
 
   return (
-    <section id="mortgage" className="padding max-w-screen-xl mx-auto overflow-hidden">
-      <motion.h2 
+    <section
+      id="mortgage"
+      aria-labelledby="mortgage-heading"
+      className="padding max-w-screen-xl mx-auto overflow-hidden"
+    >
+      <motion.h2
+        id="mortgage-heading"
         variants={slideIn("up", 0.2)}
         initial="hidden"
         whileInView="visible"
@@ -78,15 +88,14 @@ const MortgageCalculator = () => {
         Mortgage Calculator
       </motion.h2>
 
-
-      <motion.div 
+      <motion.div
         variants={fadeIn(1, 0.1)}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
-        className="max-w-full mx-auto text-center"
+        className="max-w-full mx-auto text-center hide-print"
       >
-        <Link href="#" className="group inline-flex justify-center mb-14">
+        <a href="#" className="group inline-flex justify-center">
           <span
             className="inline-flex items-center gap-2 text-sm md:text-base 
             text-sky-600 font-medium uppercase tracking-widest 
@@ -95,13 +104,13 @@ const MortgageCalculator = () => {
             Get Started
             <IoIosArrowForward className="text-lg md:text-xl" />
           </span>
-        </Link>
+        </a>
       </motion.div>
 
       {/* CONTENTS */}
-      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mt-14">
         {/* Left side - form */}
-        <motion.div 
+        <motion.div
           variants={slideIn("left", 0.3)}
           initial="hidden"
           whileInView="visible"
@@ -109,11 +118,15 @@ const MortgageCalculator = () => {
           className="space-y-8"
         >
           <div>
-            <h2 className="text-xl md:text-2xl font-bold text-gray-800">Mortgage Simulation (KPR)</h2>
-            <p className="text-sm md:text-base text-gray-600 mt-2">Estimate what your monthly mortgage payments will be</p>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-800">
+              Mortgage Simulation (KPR)
+            </h3>
+            <p className="text-sm md:text-base text-gray-600 mt-2">
+              Estimate what your monthly mortgage payments will be
+            </p>
           </div>
 
-          <Calculator 
+          <Calculator
             activeType={activeType}
             setActiveType={setActiveType}
             price={values.price}
@@ -123,17 +136,19 @@ const MortgageCalculator = () => {
             setFieldValue={setFieldValue}
           />
         </motion.div>
-        
+
         {/* Right Side - Result Box */}
-        <motion.div 
-          variants={slideIn("right", 0.9, 1)}
+        <motion.div
+          variants={slideIn("right", 0.7, 0.4)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
-          className="w-full max-w-full lg:max-w-sm justify-self-end bg-white border border-blue-200 shadow-sm rounded-xl p-8 flex flex-col gap-6"
+          className="w-full max-w-full lg:max-w-sm flex flex-col gap-6 justify-self-end bg-white border border-sky-100 shadow-md rounded-2xl p-8 transition-transform hover:scale-[1.01]"
         >
           <div>
-            <h3 className="text-sm md:text-base font-semibold text-gray-500 mb-1">Monthly Cost</h3>
+            <h3 className="text-sm md:text-base font-semibold text-gray-600 mb-1">
+              Monthly Cost
+            </h3>
             <p className="text-3xl font-bold text-sky-900">
               Rp {result?.monthlyPayment?.toLocaleString("id-ID") || 0}
             </p>
@@ -148,10 +163,7 @@ const MortgageCalculator = () => {
             </div>
             <div className="flex justify-between">
               <span>
-                {activeType === "syariah" ?
-                  "Fixed Margin"
-                : "Interest Rate"
-                }
+                {activeType === "syariah" ? "Fixed Margin" : "Interest Rate"}
               </span>
               <span className="font-semibold">
                 {result?.interestRate || 0}%
@@ -161,7 +173,7 @@ const MortgageCalculator = () => {
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default MortgageCalculator;
