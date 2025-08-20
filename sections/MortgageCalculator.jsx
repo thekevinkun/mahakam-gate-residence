@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
@@ -79,10 +80,10 @@ const MortgageCalculator = () => {
     >
       <motion.h2
         id="mortgage-heading"
-        variants={slideIn("up", 0.2)}
+        variants={slideIn("up", 0.5)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
+        viewport={{ once: true, amount: 0.3 }}
         className="text-center text-2xl md:text-3xl font-bold text-black tracking-[0.35em] uppercase mb-4"
       >
         Mortgage Calculator
@@ -92,10 +93,10 @@ const MortgageCalculator = () => {
         variants={fadeIn(1, 0.1)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.4 }}
         className="max-w-full mx-auto text-center hide-print"
       >
-        <a href="#" className="group inline-flex justify-center">
+        <Link href="#" className="group inline-flex justify-center">
           <span
             className="inline-flex items-center gap-2 text-sm md:text-base 
             text-sky-600 font-medium uppercase tracking-widest 
@@ -104,7 +105,7 @@ const MortgageCalculator = () => {
             Get Started
             <IoIosArrowForward className="text-lg md:text-xl" />
           </span>
-        </a>
+        </Link>
       </motion.div>
 
       {/* CONTENTS */}
@@ -139,7 +140,7 @@ const MortgageCalculator = () => {
 
         {/* Right Side - Result Box */}
         <motion.div
-          variants={slideIn("right", 0.7, 0.4)}
+          variants={slideIn("right", 0.5, 0.2)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}

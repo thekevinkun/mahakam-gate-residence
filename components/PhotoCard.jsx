@@ -6,16 +6,16 @@ import { scaleIn } from "@/utilities/motion";
 const PhotoCard = ({ src, altText, index }) => {
   return (
     <motion.div
-      variants={scaleIn(0.5, index * 0.20)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.25 }}
+      variants={scaleIn(0.5, index * 0.25)}
       className="relative w-full h-full aspect-square overflow-hidden shadow-md group"
     >
       <Image
         src={src}
         alt={altText}
         fill
+        priority
+        sizes="(max-width: 640px) 100vw, 
+          (max-width: 1024px) 50vw, 33vw"
         className="object-cover transition-transform duration-300 group-hover:scale-110"
       />
 

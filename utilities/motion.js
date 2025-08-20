@@ -1,8 +1,8 @@
-export const slideUpContainer = {
+export const slideContainer = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.15, // delay between items
+      staggerChildren: 0.15,
     },
   },
 };

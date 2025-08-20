@@ -11,10 +11,10 @@ const VideoCard = () => {
 
   return (
     <motion.div
-      variants={slideIn("up", 0.4, 0.1)}
+      variants={slideIn("up", 0.5)}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.25 }}
       className="relative w-full aspect-video overflow-hidden shadow-lg mb-16"
     >
       <AnimatePresence mode="wait">

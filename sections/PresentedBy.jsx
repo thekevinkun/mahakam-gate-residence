@@ -20,11 +20,11 @@ const PresentedBy = () => {
       <div className="lg:h-[548px] flex flex-col-reverse lg:flex-row gap-y-7 lg:gap-x-28 shadow-md">
         <motion.div
           id="map"
-          variants={fadeIn(0.9)}
+          variants={fadeIn(0.9, 0.15)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="flex-1 aspect-video lg:aspect-auto"
+          className="flex-1 aspect-3/2 lg:aspect-auto"
         >
           <AgentMap />
         </motion.div>

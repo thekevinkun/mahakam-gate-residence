@@ -11,19 +11,20 @@ import { slideIn, fadeIn } from "@/utilities/motion";
 const Hero = () => {
   return (
     <header id="home" className="hero">
-      <div className="relative w-full h-screen">
+      <div className="relative w-full h-svh">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
             src="/images/hero.JPG"
             alt="Aerial view of Mahakam Gate Residence housing complex"
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
 
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 md:from-black/65 to-85% md:to-transparent" />
         </div>
 
         {/* OWNER */}
@@ -47,7 +48,7 @@ const Hero = () => {
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4 pt-28 md:pt-36">
           <motion.h1
-            variants={slideIn("down", 0.5, 0.4)}
+            variants={slideIn("down", 0.5, 0.2)}
             initial="hidden"
             animate="visible"
             className="text-5xl md:text-6xl font-bold mb-2"
@@ -56,7 +57,7 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            variants={fadeIn(0.8, 0.25)}
+            variants={fadeIn(1, 0.2)}
             initial="hidden"
             animate="visible"
             className="text-lg md:text-2xl font-light mb-8"
@@ -70,19 +71,19 @@ const Hero = () => {
             animate="visible"
             className="flex items-center space-x-2 mb-10"
           >
-            <span className="text-xl md:text-2xl font-light">
+            <span className="text-2xl md:text-2xl font-light">
               {new Intl.NumberFormat("id-ID", { currency: "IDR" }).format(
                 1800000000
               )}{" "}
               IDR
             </span>
-            <span className="bg-sky-800 text-white text-xs tracking-widest px-2 py-0.5">
+            <span className="bg-sky-800 text-white text-[10px] md:text-xs tracking-widest px-2 py-0.5">
               FOR SALE
             </span>
           </motion.div>
 
           <motion.a
-            href="#agent"
+            href="#presented-by"
             variants={slideIn("up", 0.5, 0.4)}
             initial="hidden"
             animate="visible"
@@ -92,10 +93,10 @@ const Hero = () => {
           </motion.a>
 
           <motion.div
-            variants={slideIn("up", 0.5, 0.7)}
+            variants={slideIn("up", 0.5, 0.5)}
             initial="hidden"
             animate="visible"
-            className="flex items-center space-x-3 text-sky-900 text-2xl md:text-3xl hide-print"
+            className="flex items-center space-x-3 text-sky-900 text-3xl hide-print"
           >
             <Link
               href="https://www.instagram.com"

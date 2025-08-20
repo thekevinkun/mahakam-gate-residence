@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { QRCodeCanvas } from "qrcode.react";
 import { motion } from "framer-motion";
@@ -30,7 +31,7 @@ const AgentCard = () => {
     <article>
       {/* Agent Profile */}
       <motion.div
-        variants={slideIn("right", 0.7, 0.3)}
+        variants={slideIn("right", 0.5, 0.2)}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -50,26 +51,26 @@ const AgentCard = () => {
           </h3>
 
           <div className="flex gap-2 mt-2 hide-print">
-            <a
+            <Link
               href={`tel:${agentInfo.phone}`}
               className="btn btn-outline !px-5 !py-1.5 !text-xs sm:!text-sm"
             >
               <BsTelephoneFill className="text-sm sm:text-base" /> Call
-            </a>
-            <a
+            </Link>
+            <Link
               href={`mailto:${agentInfo.email}`}
               className="btn btn-outline !px-5 !py-1.5 !text-xs sm:!text-sm"
             >
               <MdEmail className="text-sm sm:text-base" /> Email
-            </a>
-            <a
-              href={`tel:${agentInfo.phone}`}
+            </Link>
+            <Link
+              href={`https://wa.me/${agentInfo.phone}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary !px-5 !py-1.5 !text-xs sm:!text-sm"
             >
               <FaWhatsapp className="text-sm sm:text-base" /> WhatsApp
-            </a>
+            </Link>
           </div>
         </div>
       </motion.div>
@@ -87,7 +88,7 @@ const AgentCard = () => {
         variants={slideIn("up", 0.4, 0.1)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.25 }}
         className="grid grid-cols-2 gap-4 text-sm"
       >
         {agentInfo.details.map((item) => (
@@ -98,10 +99,10 @@ const AgentCard = () => {
         ))}
 
         <motion.div
-          variants={slideIn("up", 0.4, 0.2)}
+          variants={slideIn("up", 0.4, 0.15)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.25 }}
           className="col-span-2 flex items-center justify-between mt-2 border p-3 rounded"
         >
           <div className="flex items-center gap-3">
