@@ -19,7 +19,7 @@ const Calculator = ({
 }) => {
   useEffect(() => {
     const handler = setTimeout(() => {
-      if (price > 0) {
+      if (price > 10000000) {
         if (activeType === "subsidi") {
           // KPR Subsidi: fixed min DP = 4,000,000
           if (downPayment < 4000000) {
@@ -36,8 +36,10 @@ const Calculator = ({
             setFieldValue("downPayment", price * 0.2);
           }
         }
+      } else {
+        setFieldValue("downPayment", "");
       }
-    }, 1000);
+    }, 800);
 
     return () => clearTimeout(handler);
   }, [activeType, downPayment, price, setFieldValue]);
