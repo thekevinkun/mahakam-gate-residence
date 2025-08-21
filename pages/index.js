@@ -1,4 +1,6 @@
 import Head from "next/head";
+
+import Schema from "@/components/Shema";
 import {
   Hero,
   FeaturesBar,
@@ -16,16 +18,16 @@ export default function Home() {
         <title>Mahakam Gate Residence</title>
         <meta
           name="description"
-          content="Explore luxury residences with full details, mortgage calculator, and agent information."
+          content="Explore Mahakam gate residence with full details, mortgage calculator, and agent information."
         />
 
         {/* OpenGraph meta tags */}
         <meta property="og:title" content="Mahakam Gate Residence" />
         <meta
           property="og:description"
-          content="Explore luxury residences with full details, mortgage calculator, and agent information."
+          content="Explore Mahakam gate residence with full details, mortgage calculator, and agent information."
         />
-        <meta property="og:image" content="/images/hero.JPG" />
+        <meta property="og:image" content="https://mahakamgateresidence.vercel.app/images/hero.JPG" />
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
@@ -37,11 +39,13 @@ export default function Home() {
         <meta name="twitter:title" content="Mahakam Gate Residence" />
         <meta
           name="twitter:description"
-          content="Explore luxury residences with full details, mortgage calculator, and agent information."
+          content="Explore Mahakam gate residence with full details, mortgage calculator, and agent information."
         />
-        <meta name="twitter:image" content="/images/hero.JPG" />
+        <meta name="twitter:image" content="https://mahakamgateresidence.vercel.app/images/hero.JPG" />
       </Head>
 
+      <Schema />
+      
       <Hero />
       <FeaturesBar />
       <main>
