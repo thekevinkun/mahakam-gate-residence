@@ -2,6 +2,13 @@
 
 A modern UI/UX landing page, featuring a fully responsive design, SEO optimization, and an **integrated Mortgage Calculator (Kalkulator KPR Indonesia)** to help potential buyers estimate payments in real time.
 
+---
+
+## ❗ Disclaimer
+
+All property images displayed in this project are **AI-generated** and used **only for demonstration and training purposes**.  
+They do not represent real properties or actual listings.  
+
 This project demonstrates how a **real estate website** can be built with interactive features, clean design, and real-world housing tools — bridging both **web development skills** and **real-estate presentation needs**.  
 
 ---
@@ -79,7 +86,22 @@ KPR Syariah → Islamic mortgage scheme using akad principles (without bunga/int
 
 ## 📸 Screenshots
 
-> (Add screenshots of homepage, property detail, and mortgage calculator here)
+### Hero
+
+<img width="1366" height="755" alt="hero-screenshot" src="https://github.com/user-attachments/assets/ec050aea-5e8d-4228-924e-d972828739cf" />
+
+### Media Gallery
+
+<img width="1366" height="1479" alt="media-gallery-screenshot" src="https://github.com/user-attachments/assets/d31a3c04-2b90-49b8-98d5-9bb350c9c222" />
+
+### Mortgage Calculator
+
+<img width="1366" height="794" alt="mortgage-calculator-screenshot" src="https://github.com/user-attachments/assets/cba99803-5877-4e9a-a45d-01b672d1c651" />
+
+### Presented By (Agent Contact)
+
+<img width="1366" height="610" alt="agent-screenshot" src="https://github.com/user-attachments/assets/7d5814e5-4c58-40c6-bd57-92a347e4cef5" />
+
 
 ---
 
@@ -104,3 +126,4 @@ Then open http://localhost:3000 in your browser.
 ## 📄 License
 
 This project is for portfolio & educational purposes.
+
