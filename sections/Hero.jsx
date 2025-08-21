@@ -2,9 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import { TbWorld } from "react-icons/tb";
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
+import { MdRealEstateAgent  } from "react-icons/md";
+import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
 
 import { slideIn, fadeIn } from "@/utilities/motion";
 
@@ -24,7 +23,7 @@ const Hero = () => {
           />
 
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 md:from-black/65 to-85% md:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-85% md:to-transparent" />
         </div>
 
         {/* OWNER */}
@@ -77,19 +76,19 @@ const Hero = () => {
               )}{" "}
               IDR
             </span>
-            <span className="bg-sky-800 text-white text-[10px] md:text-xs tracking-widest px-2 py-0.5">
+            <span className="bg-sky-800 text-white text-[10px] tracking-widest px-1.5 py-0.25">
               FOR SALE
             </span>
           </motion.div>
 
           <motion.a
-            href="#presented-by"
+            href="#mortgage"
             variants={slideIn("up", 0.5, 0.4)}
             initial="hidden"
             animate="visible"
-            className="btn btn-outline !text-white mb-12 hide-print"
+            className="btn btn-outline !px-4 md:!px-5 !border-2 !text-white mb-12 hide-print"
           >
-            Contact Agent
+            Try Mortgage Calculator
           </motion.a>
 
           <motion.div
@@ -106,11 +105,11 @@ const Hero = () => {
               <FaInstagramSquare />
             </Link>
             <Link
-              href="https://www.mahakam-gate-residence.com"
+              href="#presented-by"
               target="_blank"
-              aria-label="Official Website"
+              aria-label="Agent Contact"
             >
-              <TbWorld />
+              <MdRealEstateAgent  />
             </Link>
             <Link
               href="https://www.facebook.com"
