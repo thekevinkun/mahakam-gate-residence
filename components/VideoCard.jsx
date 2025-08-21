@@ -49,7 +49,7 @@ const VideoCard = () => {
             key="video"
             controls
             autoPlay
-            src="/mahakam-residence.mp4"
+            src="/videos/residence.mp4"
             title="Mahakam Residence Floor Plan Video"
             className="w-full h-full object-cover"
             initial={{ opacity: 0 }}
