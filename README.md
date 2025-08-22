@@ -2,6 +2,8 @@
 
 A modern UI/UX landing page, featuring a fully responsive design, SEO optimization, and an **integrated Mortgage Calculator (Kalkulator KPR Indonesia)** to help potential buyers estimate payments in real time.
 
+🔗 Live Site: [https://mahakamgateresidence.vercel.app](https://mahakamgateresidence.vercel.app)
+
 ---
 
 ## ❗ Disclaimer
@@ -126,4 +128,5 @@ Then open http://localhost:3000 in your browser.
 ## 📄 License
 
 This project is for portfolio & educational purposes.
+
 
